@@ -11,6 +11,12 @@
         "main": "{projectRoot}/main.go"
       }
     },
+    "run": {
+      "executor": "@nx-go/nx-go:serve",
+      "options": {
+        "main": "{projectRoot}/main.go"
+      }
+    },
     "serve": {
       "executor": "@nx-go/nx-go:serve",
       "options": {
