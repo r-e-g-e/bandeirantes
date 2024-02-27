@@ -4,30 +4,38 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"strings"
 )
 
 func methodValidator(writer http.ResponseWriter, request *http.Request) {
-	allowedMethods := []string{"GET", "POST"}
+	allowedMethods := [2]string{http.MethodGet, http.MethodPost}
 
 	for i := 0; i < len(allowedMethods); i++ {
-		var result bool = strings.ToLower(allowedMethods[i]) != strings.ToLower(request.Method)
-
+		fmt.Println(allowedMethods[i])
+		isValid := allowedMethods[i] != request.Method
+		if isValid {
+			return
+		}
 	}
-
 }
 
+func errorMessage(w http.ResponseWriter) {
+}
+
+const port string = ":3010"
+
 func main() {
-	http.HandleFunc("/hello", func(writer http.ResponseWriter, request *http.Request) {
-		something, err := request.Body.Read()
-		log.Println(something)
-		fmt.Fprintf(writer, "Hello!")
-	})
+	mux := http.NewServeMux()
+	server := http.Server{
+		Addr:    port,
+		Handler: mux,
+	}
 
-	port := ":3010"
-	fmt.Println("HTTP server listening on port", port)
+	// http.HandleFunc("/hello", func(writer http.ResponseWriter, request *http.Request) {
+	// 	fmt.Fprintf(writer, "Hello!")
+	// })
 
-	if err := http.ListenAndServe(port, nil); err != nil {
+	log.Println("HTTP server listening on port", port)
+	if err := server.ListenAndServe(); err != nil {
 		log.Fatal(err)
 	}
 }
