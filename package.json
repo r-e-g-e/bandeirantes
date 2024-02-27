@@ -29,6 +29,7 @@
     "@emotion/babel-plugin": "11.11.0",
     "@monodon/rust": "^1.3.3",
     "@nrwl/js": "18.0.4",
+    "@nx-go/nx-go": "^3.0.0-beta.0",
     "@nx/cypress": "18.0.4",
     "@nx/eslint": "18.0.4",
     "@nx/eslint-plugin": "18.0.4",
