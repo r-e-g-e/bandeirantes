@@ -9,6 +9,7 @@
       "outputs": ["{options.outputPath}"],
       "defaultConfiguration": "production",
       "options": {
+        "isolatedConfig": false,
         "compiler": "babel",
         "outputPath": "dist/apps/front",
         "index": "apps/front/src/index.html",
