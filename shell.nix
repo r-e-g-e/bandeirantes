@@ -7,6 +7,7 @@
       rustup
       nodejs_18
       protobuf
+      go
     ];
     RUSTC_VERSION = pkgs.lib.readFile ./rust-toolchain;
     # https://github.com/rust-lang/rust-bindgen#environment-variables
