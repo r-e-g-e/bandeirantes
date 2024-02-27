@@ -1,3 +1,28 @@
 syntax = "proto3";
 
-// WIP
+message Match {
+  uint64 id = 1;
+  uint32 tps = 2; // Game's speed. Stands for (Ticks per Second)
+  uint32 connected_players = 3;
+  uint32 max_players = 4;
+  uint32 match_name = 5;
+}
+
+message GetMatchesRequest {
+  uint32 page = 1;
+  optional uint32 results_per_page = 2;
+}
+
+message GetMatchesResponse {
+  repeated Match matches = 1;
+}
+
+message GamePlayerConnectionRequest {
+  uint64 match_id = 1;
+  optional string player_name = 2;
+}
+
+message GamePlayerConnectionResponse {
+  string game_server_ip_address = 1;
+  string token = 2;
+}
